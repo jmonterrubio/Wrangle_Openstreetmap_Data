@@ -6,10 +6,11 @@ Created on 31/01/2016
 
 import creation
 import position
+from utils import string
 
 def fill(d, key, value):
     if value:
-        d[key] = value
+        d[key] = string.normalize(value)
         
 def parse(node, element):
     created = {}

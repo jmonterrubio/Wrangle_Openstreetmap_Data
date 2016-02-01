@@ -5,21 +5,17 @@ Created on 31/01/2016
 '''
 
 import address
-import re
-
-problemchars = re.compile(r'[=\+/&<>;\'"\?%#$@\,\. \t\r\n]')
+from utils import string
 
 def fill(d, key, value):
     if value:
-        d[key] = value
+        d[key] = string.normalize(value)
         
-def contains_problematic_characters(tag_key):
-    return problemchars.search(tag_key)
     
 def parse(node, element):
     addr = {}
     for tag in element.iter("tag"):
-        if contains_problematic_characters(tag.attrib['k']):
+        if string.contains_problematic_characters(tag.attrib['k']):
             continue
         if address.fill(addr, tag.attrib['k'], tag.attrib['v']):
             continue

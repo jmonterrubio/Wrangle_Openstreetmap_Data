@@ -7,12 +7,13 @@ Created on 31/01/2016
 import attributes
 import tags
 import node_references
+from utils import string
 
 ELEMENTS = ['node', 'way']
 
 def fill(d, key, value):
     if value:
-        d[key] = value
+        d[key] = string.normalize(value)
     
 def shape(element):
     node = {}
