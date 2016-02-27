@@ -5,11 +5,15 @@ Created on 31/01/2016
 '''
 
 import address
-from utils import string
+from utils import string 
 
-def fill(d, key, value):
+def fill_string(d, key, value):
     if value:
         d[key] = string.normalize(value)
+
+def fill(d, key, value):
+    if key != 'undefined' and value:
+        d[key] = value
         
     
 def parse(node, element):

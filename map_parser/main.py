@@ -11,7 +11,7 @@ def clean_map():
     # NOTE: if you are running this code on your computer, with a larger dataset, 
     # call the process_map procedure with pretty=False. The pretty=True option adds 
     # additional spaces to the output, making it significantly larger.
-    data = parser.process_map('../resources/santander_spain.osm')
+    data = parser.process_map('../resources/near_santander.osm')
     #pprint.pprint(data)
     
 

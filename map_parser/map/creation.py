@@ -10,7 +10,7 @@ USER = 'user'
 
 def fill_user_attr(created, key, value):
     if key == USER:
-        created[key] = string.normalize(value)
+        created[key] = value#string.normalize(value)
         return True
     return False
 

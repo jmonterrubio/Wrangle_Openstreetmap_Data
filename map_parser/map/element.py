@@ -13,7 +13,7 @@ ELEMENTS = ['node', 'way']
 
 def fill(d, key, value):
     if value:
-        d[key] = string.normalize(value)
+        d[key] = value#string.normalize(value)
     
 def shape(element):
     node = {}

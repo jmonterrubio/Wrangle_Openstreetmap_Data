@@ -8,9 +8,13 @@ import creation
 import position
 from utils import string
 
-def fill(d, key, value):
+def fill_string(d, key, value):
     if value:
         d[key] = string.normalize(value)
+
+def fill(d, key, value):
+    if value:
+        d[key] = value
         
 def parse(node, element):
     created = {}
@@ -20,6 +24,6 @@ def parse(node, element):
             continue
         if position.fill(pos, key, value):
             continue
-        fill(node, key, value)
+        fill_string(node, key, value)
     fill(node, 'created', created)
     fill(node, 'pos', pos)
