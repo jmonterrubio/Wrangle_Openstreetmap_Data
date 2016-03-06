@@ -1,0 +1,4 @@
+Udacity forums - https://discussions.udacity.com/c/nd002-p3-data-wrangling-with-mongodb
+MongoDB manual - https://docs.mongodb.org/manual/
+Python Essential Reference (David M. Beazley) - Book
+Openstreetmap wiki - http://wiki.openstreetmap.org/wiki/Main_Page
