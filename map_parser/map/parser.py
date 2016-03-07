@@ -2,6 +2,8 @@
 Created on 28/1/2016
 
 @author: jmonterrubio
+
+XML to JSON parser
 '''
 
 import element
@@ -14,7 +16,9 @@ import xml.etree.cElementTree as ET
 #lower = re.compile(r'^([a-z]|_)*$')
 #lower_colon = re.compile(r'^([a-z]|_)*:([a-z]|_)*$')
 
-
+#
+# Convert input xml file into an output json file
+#
 def process_map(file_in, pretty = False):
     # You do not need to change this file
     file_out = "{0}.json".format(file_in)

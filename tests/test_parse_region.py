@@ -3,6 +3,8 @@
 Created on 30/01/2016
 
 @author: jmonterrubio
+
+Region parsing tests
 '''
 
 import unittest
@@ -16,41 +18,47 @@ BAD_REGION_WITH_DUPLICATES = 'Liérganes;Santander;Cantabria;Cantabria;España;E
 BAD_REGION_INCORRECT_ORDER = 'Europa;España;Liérganes;Santander;Cantabria'
 
 class TestsParseRegion(unittest.TestCase):
-        
+    
+    # Parse correctly a well defined region
     def test_parse_region(self):
         a_region = {}
         a_region[region.REGION_KEY] = ONE_GOOD_REGION
         parsed_region = {}
         region.fill(parsed_region, region.REGION_KEY, ONE_GOOD_REGION)
         self.assertEqual(parsed_region, a_region)
-     
+    
+    # Parse correctly a region with commas as separator
     def test_not_contains_commas(self):
         a_region = {}
         a_region[region.REGION_KEY] = ONE_GOOD_REGION
         parsed_region = {}
         region.fill(parsed_region, region.REGION_KEY, BAD_REGION_WITH_COMMAS)
         self.assertEqual(parsed_region, a_region)
-     
+    
+    # Parse correctly a region in a non spanish language
     def test_spanish_language(self):
         a_region = {}
         a_region[region.REGION_KEY] = ONE_GOOD_REGION
         parsed_region = {}
         region.fill(parsed_region, region.REGION_KEY, BAD_REGION_NOT_SPANISH)
         self.assertEqual(parsed_region, a_region)
-         
+    
+    # Parse correctly a region without known entities
     def test_contains_known_entities(self):
         parsed_region = {}
         region.fill(parsed_region, region.REGION_KEY, BAD_REGION_MISSING_ENTITIES)
         self.assertTrue('España' in parsed_region[region.REGION_KEY])
         self.assertTrue('Europa' in parsed_region[region.REGION_KEY])
-         
+
+    # Parse correctly a region with duplicate entities
     def test_not_contains_duplicates(self):
         a_region = {}
         a_region[region.REGION_KEY] = ONE_GOOD_REGION
         parsed_region = {}
         region.fill(parsed_region, region.REGION_KEY, BAD_REGION_WITH_DUPLICATES)
         self.assertEqual(parsed_region, a_region)
-        
+    
+    # Parse correctly a region without a good order
     def test_has_correct_entities_order(self):
         a_region = {}
         a_region[region.REGION_KEY] = ONE_GOOD_REGION

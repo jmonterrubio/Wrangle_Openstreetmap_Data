@@ -3,6 +3,8 @@
 Created on 30/01/2016
 
 @author: jmonterrubio
+
+Position parsing tests
 '''
 
 import unittest
@@ -14,7 +16,8 @@ ONE_POSITION_LON_GOOD = 2.0
 UNKNOWN_POSITION_FIELD = 'unknown'
 
 class TestsParsePosition(unittest.TestCase):
-        
+    
+    # Parse correctly a well defined position
     def test_parse_position(self):
         a_position = [ONE_POSITION_LAT_GOOD,ONE_POSITION_LON_GOOD]
         parsed_position = []
@@ -22,6 +25,7 @@ class TestsParsePosition(unittest.TestCase):
         position.fill(parsed_position, 'lon', ONE_POSITION_LON_GOOD)
         self.assertEqual(parsed_position, a_position)
         
+    # Parsing is checking correct order
     def test_parse_position_reverse_parsing_order(self):
         a_bad_position = [ONE_POSITION_LON_GOOD,ONE_POSITION_LAT_GOOD]
         parsed_position = []
@@ -29,6 +33,7 @@ class TestsParsePosition(unittest.TestCase):
         position.fill(parsed_position, 'lat', ONE_POSITION_LAT_GOOD)
         self.assertNotEqual(parsed_position, a_bad_position)
     
+    # Parsing is not adding unknown fields
     def test_parse_position_unknown_field(self):
         a_position = [ONE_POSITION_LAT_GOOD,ONE_POSITION_LON_GOOD]
         parsed_position = [ONE_POSITION_LAT_GOOD,ONE_POSITION_LON_GOOD]
